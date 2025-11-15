@@ -1,4 +1,4 @@
-virginia_cidr = "10.10.0.0/16"
+stockholm_cidr = "10.10.0.0/16"
 # public_subnet  = "10.10.0.0/24"
 # private_subnet = "10.10.1.0/24"
 
@@ -6,12 +6,12 @@ subnets = ["10.10.0.0/24", "10.10.1.0/24"]
 
 tags = {
   "env"         = "dev"
-  "owner"       = "Nazareno"
+  "owner"       = "Idoia"
   "cloud"       = "AWS"
   "IAC"         = "Terraform"
   "IAC_Version" = "1.3.6"
-  "project"     = "cerberus"
-  "region"      = "virginia"
+  "project"     = "ido_red_terraform"
+  "region"      = "stockholm"
 }
 
 sg_ingress_cidr = "0.0.0.0/0"

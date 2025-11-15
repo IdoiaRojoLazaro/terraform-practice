@@ -1,5 +1,5 @@
-variable "virginia_cidr" {
-  description = "CIDR Virginia"
+variable "stockholm_cidr" {
+  description = "CIDR stockholm"
   type        = string
 }
 
@@ -49,9 +49,9 @@ variable "ingress_ports_list" {
 }
 
 variable "access_key" {
-  
+
 }
 
 variable "secret_key" {
-  
+
 }
