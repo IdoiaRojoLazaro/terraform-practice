@@ -1,5 +1,5 @@
-variable "stockholm_cidr" {
-  description = "CIDR stockholm"
+variable "ireland_cidr" {
+  description = "CIDR ireland"
   type        = string
 }
 

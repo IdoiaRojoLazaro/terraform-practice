@@ -1,12 +1,12 @@
-resource "aws_vpc" "vpc_stockholm" {
-  cidr_block = var.stockholm_cidr
+resource "aws_vpc" "vpc_ireland" {
+  cidr_block = var.ireland_cidr
   tags = {
-    "Name" = "vpc_stockholm-${local.sufix}"
+    "Name" = "vpc_ireland-${local.sufix}"
   }
 }
 
 resource "aws_subnet" "public_subnet" {
-  vpc_id                  = aws_vpc.vpc_stockholm.id
+  vpc_id                  = aws_vpc.vpc_ireland.id
   cidr_block              = var.subnets[0]
   map_public_ip_on_launch = true
   tags = {
@@ -15,7 +15,7 @@ resource "aws_subnet" "public_subnet" {
 }
 
 resource "aws_subnet" "private_subnet" {
-  vpc_id     = aws_vpc.vpc_stockholm.id
+  vpc_id     = aws_vpc.vpc_ireland.id
   cidr_block = var.subnets[1]
   tags = {
     "Name" = "private_subnet-${local.sufix}"
@@ -26,16 +26,16 @@ resource "aws_subnet" "private_subnet" {
 }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.vpc_stockholm.id
+  vpc_id = aws_vpc.vpc_ireland.id
 
   tags = {
-    Name = "igw vpc stockholm-${local.sufix}"
+    Name = "igw vpc ireland-${local.sufix}"
   }
 }
 
 
 resource "aws_route_table" "public_crt" {
-  vpc_id = aws_vpc.vpc_stockholm.id
+  vpc_id = aws_vpc.vpc_ireland.id
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -55,7 +55,7 @@ resource "aws_route_table_association" "crta_public_subnet" {
 resource "aws_security_group" "sg_public_instance" {
   name        = "Public Instance SG"
   description = "Allow SSH inbound traffic and ALL egress traffic"
-  vpc_id      = aws_vpc.vpc_stockholm.id
+  vpc_id      = aws_vpc.vpc_ireland.id
 
   dynamic "ingress" {
     for_each = var.ingress_ports_list
